@@ -7,11 +7,21 @@ import {
 	  Image,
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import { LoginView } from './Views/loginView.js';
+import { LoginView } from './Views/Login/loginView.js';
+import { ExploreView } from './Views/Explore/exploreView.js'; 
 import styles from './styles.js';
+
+
+const Header = props => (
+	<View style={{backgroundColor: 'transparent'}}>
+	</View>
+);
+
 class HomeScreen extends React.Component {
 	  static navigationOptions = {
-		      title: 'Welcome',
+		      title: 'Explore',
+		      headerTitleStyle: {Color: 'black'},
+		      header: (props) => <Header {...props}/>,
 		    };
 	  render() {
 
@@ -23,6 +33,9 @@ class HomeScreen extends React.Component {
 		  	<Button
 		  		onPress={() => navigate('Login')}
 		  		title="Login" />
+			<Button
+			      onPress={() => navigate('Explore')}
+			      title="Explore" />
 			</View>
 			</Image>
 		);
@@ -47,6 +60,7 @@ const  ExploringTheUnconscious =StackNavigator({
 	  Home: { screen: HomeScreen },
 	  Chat: { screen: ChatScreen },
 	  Login: { screen: LoginView },
+	  Explore: { screen: ExploreView},
 
 });
 
