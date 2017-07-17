@@ -5,10 +5,12 @@ import {
 	  View,
 	  Button,
 	  Image,
+	  TouchableOpacity
 } from 'react-native';
-import { StackNavigator } from 'react-navigation';
-import { LoginView } from './Views/Login/loginView.js';
-import { ExploreView } from './Views/Explore/exploreView.js'; 
+import { StackNavigator, TabNavigator } from 'react-navigation';
+import { tabHolder } from './Views/Login/tabholder.js';
+import { ExploreView } from './Views/Explore/exploreView.js';
+import { RegisterView } from './Views/Registration/registrationView.js';
 import styles from './styles.js';
 
 
@@ -19,8 +21,7 @@ const Header = props => (
 
 class HomeScreen extends React.Component {
 	  static navigationOptions = {
-		      title: 'Explore',
-		      headerTitleStyle: {Color: 'black'},
+		      title: 'Home',
 		      header: (props) => <Header {...props}/>,
 		    };
 	  render() {
@@ -30,38 +31,29 @@ class HomeScreen extends React.Component {
 			<Image source = {require('./Assets/l4040003cd_-_dock-in-fog.jpg')}
 			      style={styles.container}>
 			<View>
-		  	<Button
-		  		onPress={() => navigate('Login')}
-		  		title="Login" />
-			<Button
-			      onPress={() => navigate('Explore')}
-			      title="Explore" />
+		  	<TouchableOpacity 
+		  		onPress={() => navigate('Holder')}
+			        style={styles.loginStyle}>
+				<Text style={styles.textStyle}>Login</Text>
+			</TouchableOpacity>
+			      </View>
+			<View>      
+		  	<TouchableOpacity 
+		  		onPress={() => navigate('Explore')}
+			      	style={styles.exploreStyle}>
+				<Text style={styles.textStyle}>Explore</Text> 
+			</TouchableOpacity>
 			</View>
 			</Image>
 		);
 	 }
 }
 
-class ChatScreen extends React.Component {
-	static navigationOptions = ({navigation }) => ({ 
-		title: `Chat with ${navigation.state.params.user}`,
-	});
-	render() {
-		const { params } = this.props.navigation.state;
-		return (
-			<View>
-				<Text>Chat with {params.user}</Text>
-			</View>
-		);
-	}
-}
 
 const  ExploringTheUnconscious =StackNavigator({
 	  Home: { screen: HomeScreen },
-	  Chat: { screen: ChatScreen },
-	  Login: { screen: LoginView },
-	  Explore: { screen: ExploreView},
-
+	  Holder: { screen: tabHolder },
+	  Explore: { screen: ExploreView },
 });
 
 AppRegistry.registerComponent('ExploringTheUnconscious', () => ExploringTheUnconscious);

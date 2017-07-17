@@ -4,17 +4,19 @@ import {
 	Text,
 	Alert,
 	TextInput,
-	Button,
+	TouchableOpacity,
 	Image,
 } from 'react-native';
 
 import firebase from 'firebase'
-import { StackNavigator } from 'react-navigation';
+import { TabNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as ActionCreators from '../../Actions/authActions.js';
 import styles from './styles.js';
 import {ExploreView} from '../Explore/exploreView.js';
+import {RegisterView} from '../Registration/registrationView.js';
+
 export class LoginView extends React.Component {
 	constructor(props) {
 		super(props);
@@ -35,14 +37,6 @@ export class LoginView extends React.Component {
 		console.log(this);
 		console.log(ActionCreators);
 	}
-	static navigationOptions = { 
-		headerRight: <Button title="Logout"
-		disabled={!(firebase.auth().currentUser)}
-		onPress={() =>
-				this.setState(firebase.auth().signOut())	
-			}/>,
-	};
-
 
 
       submitLogin= ({email, password}) =>  {
@@ -51,13 +45,6 @@ export class LoginView extends React.Component {
 		      .catch(error => { 
 			      console.log('didnt work')
 		});
-      }
-
-      submitRegistration = ({email, password, navigate}) => {
-	      console.log(email);
-	      console.log(password); 
-	      firebase.auth().createUserWithEmailAndPassword(email, password)
-	      .catch(error => console.log('registered'));
       }
 
 	render() {
@@ -79,25 +66,18 @@ export class LoginView extends React.Component {
 			  onChangeText = {(password) => this.setState({password})}
 			 />
 
-			<Button
-				title= 'Login'
+			<TouchableOpacity
+				style={styles.button}
 				onPress={() =>
 					this.submitLogin(this.state, navigate)
-			}/>
-			<Button
-				title= 'Register'
-				onPress={() => 
-					this.submitRegistration(this.state)
-			}/>
+			}>
+				<Text style={styles.buttonText}> Login </Text>
+			</TouchableOpacity>
 			</View>
 			</Image>
 		);
 		}
 }
-
-const navi = StackNavigator({
-	Explore: {screen: ExploreView },
-});
 
 
 function mapDispatchToProps(dispatch) {
