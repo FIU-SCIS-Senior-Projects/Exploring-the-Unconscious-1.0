@@ -6,10 +6,10 @@ import {
 	TextInput,
 	ScrollView,
 	TouchableOpacity,
+	Button
 } from 'react-native';
 import styles from './style.js';
-import firebase from 'firebase';
-
+import * as firebase from 'firebase';
 export class RegisterView extends React.Component {
 	constructor(props) {
 		super(props);
@@ -19,17 +19,45 @@ export class RegisterView extends React.Component {
 			email: '',
 			password: '',
 			verification: '',
+			isLoggedIn: 'false',
 		};
 	}
- 
-	submitRegistration = ({email, password, navigate}) => {
+	submitRegistration = ({email, password, firstName, lastName}) => {
 	      console.log(email);
 	      console.log(password); 
 	      firebase.auth().createUserWithEmailAndPassword(email, password)
-	      .catch(error => console.log('registered'));
-      }
+	      .catch(error => console.log('registered')).then(() => {
+		      firebase.auth().signInWithEmailAndPassword(email,password).catch(error => 
+			      console.log('user logged on')).then(() => {
+		     				 firebase.auth().onAuthStateChanged(function(user) {
+		     			 			if(user) {
+			     						 console.log(user);
+		      							 firebase.database().ref().child("users").child(user.uid).set({
+									 displayName: firstName + ' ' + lastName,
+								         email: email,
+									 questions: []
+		     	 						});
+		     	 					}
+			     					 else{
 
-	
+		     		 					}
+							});
+
+     					});
+		      });
+	}
+   	static navigationOptions ={
+		headerRight: <Button title="Logout" onPress={() =>
+			firebase.auth().signOut().then(function() {
+			console.log("signed out")
+		}).catch(function(error){
+			console.log(error)
+		})
+			} 
+		></Button>
+	}
+
+
 	render() {
 		return(
 			<Image source={ require('../../Assets/gradient.jpg')}

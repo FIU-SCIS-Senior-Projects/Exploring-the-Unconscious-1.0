@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import {
 	View,
 	Text,
+	Button
 } from 'react-native'
 import {TabNavigator} from 'react-navigation';
 import {LoginView} from './loginView.js';

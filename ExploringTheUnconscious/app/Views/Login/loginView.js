@@ -6,6 +6,7 @@ import {
 	TextInput,
 	TouchableOpacity,
 	Image,
+	Button
 } from 'react-native';
 
 import firebase from 'firebase'
@@ -24,6 +25,16 @@ export class LoginView extends React.Component {
 			email: '',
 			password: '',
 		};
+	}
+   	static navigationOptions ={
+		headerRight: <Button title="Logout" onPress={() =>
+			firebase.auth().signOut().then(function() {
+			console.log("signed out")
+		}).catch(function(error){
+			console.log(error)
+		})
+			} 
+		></Button>
 	}
 	componentDidMount(){
 		firebase.auth().onAuthStateChanged(firebaseUser => {

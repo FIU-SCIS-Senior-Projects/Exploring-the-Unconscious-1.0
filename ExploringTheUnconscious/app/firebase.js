@@ -7,6 +7,8 @@ var config = {
                        storageBucket: "crystalball-ecc5a.appspot.com",
                            messagingSenderId: "145484281462"
         			 };
-                            firebase.initializeApp(config);
+firebase.initializeApp(config);
+var rootRef = firebase.database().ref();
+var ref = rootRef.child("users");
 
 export default 'firebase'
