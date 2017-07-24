@@ -671,7 +671,7 @@ public static void main(String[] args) {
     }
    }
         
-       // System.out.println("Final Cdigit:" + Cdigit2);
+        //System.out.println("Final Cdigit:" + Cdigit2);
       ///////////////////////////////////////////Calculating Answer 2's 3rd digit/////////////////////////////////////
         A3d1 = Answer3.replace(" ", "").length();
         if (A3d1 > 9){
@@ -694,7 +694,7 @@ public static void main(String[] args) {
     }
      else
       Cdigit3 = (Math.abs(A3d1 - modCresult));
-     // System.out.println(Cdigit3);
+      //System.out.println(Cdigit3);
      //////////////////////////////////////////////Collecting Sum of question and 1st answer/////////////////////////////////////////////////////////////
      SumA3 = Adigit3 + Qdigit3;
     // System.out.println("SumA3: " + SumA3);
@@ -786,10 +786,12 @@ public static void main(String[] args) {
      }
      ///////////////////////////Sum of Question and 3rd Answer////////////////////////////////////////
       SumC3 = Cdigit3 + Qdigit3;
-      
+      System.out.println("True Sum Digit 1: "+ Cdigit3); 
+      System.out.println("True Sum Digit 1: "+ Qdigit3); 
+      System.out.println("True Sum Digit 1: "+ SumC3); 
       if(SumC3 > 9){
-         modCS3 = SumB3 % 10;
-        // System.out.println("modSum: " + modCS3);
+         modCS3 = SumC3 % 10;
+         System.out.println("modSum: " + modCS3);
          modSumC2 = SumC3/10;
         }
       if (Cdigit2 > 9 && Qdigit2 > 9){
@@ -807,7 +809,7 @@ public static void main(String[] args) {
      }*/
      else{
         SumC2 = Cdigit2 + Qdigit2 + modSumC2; 
-       // System.out.println("sum2ndB " + SumC2);
+       System.out.println("sum2ndB " + SumC2);
      }
       if (SumC2 > 9){
          modCS2 = SumC2 % 10;
@@ -843,6 +845,9 @@ public static void main(String[] args) {
      if (Qdigit1 == SumB1 || Qdigit1 == modS1 || Qdigit1 == SumB2 || Qdigit1 == SumB3 || Qdigit2 == SumB1 || Qdigit2 == modS1 || Qdigit2 == SumB2 || Qdigit2 == SumB3 || Qdigit3 == SumB1 || Qdigit3 == modS1 || Qdigit3 == SumB2 || Qdigit3 == SumB3){
          if(A2d1 == SumB1 || A2d1 == modS1 || A2d1 == SumB2 || A2d1 == SumB3 || Bdigit2 == SumB1 || Bdigit2 == modS1 || Bdigit2 == SumB2 || Bdigit2 == SumB3 || Bdigit3 == SumB1 || Bdigit3 == modS1 || Bdigit3 == SumB2 || Bdigit3 == SumB3){
              System.out.println("Answer 2: Compatible"); 
+             if(A2d1 != SumB1 || A2d1 != modS1 || A2d1 != SumB2 || A2d1 != SumB3 || Bdigit2 != SumB1 || Bdigit2 != modS1 || Bdigit2 != SumB2 || Bdigit2 != SumB3 || Bdigit3 != SumB1 || Bdigit3 != modS1 || Bdigit3 != SumB2 || Bdigit3 != SumB3){
+                  System.out.println("Answer 2: Not Compatible");
+             }
          }
      }
      else
@@ -855,7 +860,7 @@ public static void main(String[] args) {
      }
      
      if (Qdigit1 == SumC1 || Qdigit1 == modCS1 || Qdigit1 == SumC2 || Qdigit1 == SumC3 || Qdigit2 == SumC1 || Qdigit2 == modCS1 || Qdigit2 == SumC2 || Qdigit2 == SumC3 || Qdigit3 == SumC1 || Qdigit3 == modCS1 || Qdigit3 == SumC2 || Qdigit3 == SumC3){
-         if(A3d1 == SumC1 || A3d1 == modCS1 || A3d1 == SumC2 || A3d1 == SumC3 || Bdigit2 == SumC1 || Bdigit2 == modCS1 || Bdigit2 == SumC2 || Bdigit2 == SumC3 || Cdigit3 == SumC1 || Cdigit3 == modCS1 || Cdigit3 == SumC2 || Cdigit3 == SumC3){
+         if(A3d1 == SumC1 || A3d1 == modCS1 || A3d1 == SumC2 || A3d1 == SumC3 || Cdigit2 == SumC1 || Cdigit2 == modCS1 || Cdigit2 == SumC2 || Cdigit2 == SumC3 || Cdigit3 == SumC1 || Cdigit3 == modCS1 || Cdigit3 == SumC2 || Cdigit3 == SumC3){
              System.out.println("Answer 3: Compatible"); 
          }
      }
@@ -863,7 +868,7 @@ public static void main(String[] args) {
          System.out.println("Answer 3: Not Compatible"); 
      
      if (Qdigit1 == SumC1 || Qdigit1 == modCS1 || Qdigit1 == SumC2 || Qdigit1 == SumC3 || Qdigit2 == SumC1 || Qdigit2 == modCS1 || Qdigit2 == SumC2 || Qdigit2 == SumC3 || Qdigit3 == SumC1 || Qdigit3 == modCS1 || Qdigit3 == SumC2 || Qdigit3 == SumC3){
-         if(A3d1 != SumC1 && A3d1 != modCS1 && A3d1 != SumC2 && A3d1 != SumC3 && Bdigit2 != SumC1 && Bdigit2 != modCS1 && Bdigit2 != SumC2 && Bdigit2 != SumC3 && Cdigit3 != SumC1 && Cdigit3 != modCS1 && Cdigit3 != SumC2 && Cdigit3 != SumC3){
+         if(A3d1 != SumC1 && A3d1 != modCS1 && A3d1 != SumC2 && A3d1 != SumC3 && Cdigit2 != SumC1 && Cdigit2 != modCS1 && Cdigit2 != SumC2 && Cdigit2 != SumC3 && Cdigit3 != SumC1 && Cdigit3 != modCS1 && Cdigit3 != SumC2 && Cdigit3 != SumC3){
              System.out.println("Answer 3: Not Compatible"); 
          }
      }
