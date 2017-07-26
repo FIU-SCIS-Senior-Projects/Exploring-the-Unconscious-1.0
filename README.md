@@ -1,7 +1,7 @@
 # Exploring-the-Unconscious-1.0
 Exploring the Unconscious 1.0 -Daniel Antonio (danto015@fiu.edu) -Ruben Valdes(rvald095@fiu.edu)
 
-This project is the first implementation of the compatibility algorithm developed by Mark Mohr. Exploring the Unconscious seeks to better connect your conscious wants with your Unconscious desires. The current application statick consists of the following: A java engine, React-nativejs Front-end, and a Firebase back-end to hold data.
+This project is the first implementation of the compatibility algorithm developed by Mark Mohr. Exploring the Unconscious seeks to better connect your conscious wants with your Unconscious desires. The current application state consists of the following: A java engine, React-nativejs Front-end, and a Firebase back-end to hold data.
 
 
 # Directory Structure
